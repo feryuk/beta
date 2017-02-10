@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="92d0b6bc-c10f-41a4-a8e8-5e26bc98eb96" name="EDBF" url="http://88.150.160.119">
+        <fileTransfer host="88.150.160.119" port="21" rootFolder="/everydayisblackfriday.co.uk/beta">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
