@@ -20,22 +20,27 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'iphonere_wp58');
+define('DB_NAME', 'edbf');
 
 /** MySQL database username */
-define('DB_USER', 'iphonere_wp58');
+define('DB_USER', 'edbf');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'E(JziAzsj5ZRt&Xiy4(39.#9');
+define('DB_PASSWORD', 'ferike');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+define('DB_CHARSET', 'utf8mb4');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
+
+
+if ( !defined('ABSPATH') )
+    define('ABSPATH', dirname(__FILE__) . '/');
+
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -46,28 +51,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'yFlPXBw5SJ1qdnIr15NT4mVbqqDlg2ggRj874KcYnSBA2MWOua5ULi5nBU4ttn04');
-define('SECURE_AUTH_KEY',  '64rLLpndbQYtkdY4tpZ4t7gD1izSac7iHiLwva0fldzsU8RJbmTXA0KksgrAO497');
-define('LOGGED_IN_KEY',    'gZaSXjtrBVRepADcZNT2ovCxQU204vLYJE45fnEHyjY3hn5oKmDx5GQKmBVgJ9PX');
-define('NONCE_KEY',        'a5AqueMW0DY4tQOaovu2FRMd6dhuFpOuEmztxdEDyEAr6M8if4SNOxjPhcyy5MPI');
-define('AUTH_SALT',        'gKRdRA3flcQcgn3Orve8F1CtBP5eYsepebkSClTaIOs60ytxrSMp3XWoxKyjMlTY');
-define('SECURE_AUTH_SALT', 'e9f1nm1C32JuVqecw2tOtyW29WY419AJO9Hlf6luGCz7aV0COu7F6PDfoh5g5G8S');
-define('LOGGED_IN_SALT',   '1gIhwnSOj7uHjOrPPPfyw1qjNNItol0hxT3tcYB98HsGSq0hjWA3t4li00ViHkOb');
-define('NONCE_SALT',       'VO5hzjrCMymKR29Py7Voj0kyvT6N4GXYQwXZNXiGuMJiVXQLgHWA5oWq2iRyORLH');
-define( 'WP_MEMORY_LIMIT', '256M' );
-
-
-/**
- * Other customizations.
- */
-define('FS_METHOD','direct');define('FS_CHMOD_DIR',0755);define('FS_CHMOD_FILE',0644);
-define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
-
-/**
- * Turn off automatic updates since these are managed upstream.
- */
-define('AUTOMATIC_UPDATER_DISABLED', true);
-
+define('AUTH_KEY',         'XQ{j~R;D5`ml(RG=4+r?o<BY5JE4eY-Sl!k9cU bP1<@}/qd>_)*NQl }LkhHM!W');
+define('SECURE_AUTH_KEY',  'i~@ik5U+RJu.Kq+Il^@-c;W)F s)AeB+kA{[c<$qU=Y,R{`vd6n~oY{nH9HVR`#Y');
+define('LOGGED_IN_KEY',    ';_PTiqqr`rn[+kHy=1Eb%PYZ`=`I,uC@b(GPbVk>`[M8Z;<?@>h3qs+l8kg{&7?~');
+define('NONCE_KEY',        ',qg&EmnifFXw?~ONX)T2#he8I=JxY*1C*4 G %H7?,imaC//YH]:=i=tt$KbK7:G');
+define('AUTH_SALT',        'a$a&adK0R}:yDjPn4`g*;?L/-(~8pKgx34.+&]3reL;0d&eOfa b^`[KRzcv$M|1');
+define('SECURE_AUTH_SALT', '(Tafw8c Rk5xm/#zd*~R2O!KKH20cEwJl8~aSFpE{*NV O<:^)okJJj=,4y`&hN?');
+define('LOGGED_IN_SALT',   '!7l$|@t.o=tQ={-P)omG{mTr:ALZ6d:BVFvqo=;#[{&i(8Pb%?3owI.Yz}&d:DQk');
+define('NONCE_SALT',       'f4T#Vj0WnNHsh)yC~}T8^@j,p=2(f(O(M0Nn|jX|IS/-(A@reMNYPTzrA!9B5U+`');
 
 /**#@-*/
 

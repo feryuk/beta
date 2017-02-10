@@ -1,11 +1,12 @@
+
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /beta/
+RewriteBase /edbf/wordpress/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /beta/index.php [L]
+RewriteRule . /edbf/wordpress/index.php [L]
 </IfModule>
 
 # END WordPress

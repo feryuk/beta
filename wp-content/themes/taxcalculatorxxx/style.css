@@ -1,0 +1,299 @@
+@charset "UTF-8";
+/*
+Theme Name: Tax Calculatorxxx
+Theme URI: https://wordpress.org/themes/twentysixteen/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Twenty Sixteen is a modernized take on an ever-popular WordPress layout — the horizontal masthead with an optional right sidebar that works perfectly for blogs and websites. It has custom color options with beautiful default color schemes, a harmonious fluid grid using a mobile-first approach, and impeccable polish in every detail. Twenty Sixteen will make your WordPress look beautiful everywhere.
+Version: 1.3
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, right-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, blog
+Text Domain: twentysixteen
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+md-toolbar.md-default-theme.md-hue-2 {
+  background-color: #4285f4;
+  color: white; }
+
+@media screen and (max-width: 600px) {
+  md-card.main_card {
+    width: 100%;
+    margin: 0; } }
+
+@media screen and (max-width: 600px) {
+  ui-view.main_view {
+    padding: 0px; } }
+
+.select_value {
+  display: block; }
+
+.animate-enter {
+  width: 0; }
+
+.animate-enter {
+  width: 100%;
+  -webkit-transition: width 20s;
+  transition: width 20s; }
+
+md-slider {
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 40px; }
+  md-slider .md-track-container {
+    height: 20px;
+    -webkit-border-radius: 5px;
+            border-radius: 5px; }
+  md-slider .md-thumb {
+    z-index: 1;
+    position: absolute;
+    left: -25px;
+    top: 8px;
+    width: 58px;
+    height: 58px;
+    -webkit-border-radius: 38px;
+            border-radius: 38px;
+    -webkit-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+        transform: scale(0.6);
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear; }
+  md-slider .md-thumbx:after {
+    width: 50px;
+    height: 50px; }
+  md-slider .md-focus-ring {
+    position: absolute;
+    left: -19px;
+    top: 8px;
+    width: 38px;
+    height: 38px;
+    -webkit-border-radius: 48px;
+            border-radius: 48px;
+    border: 2px solid #D6D6D6;
+    background-color: transparent;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+        transform: scale(0);
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear; }
+  md-slider .md-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1) !important; }
+
+md-slider.md-default-theme .md-track.md-track-fill {
+  background: -webkit-linear-gradient(340deg, #efffff, #2577ff);
+  background: linear-gradient(110deg, #efffff, #2577ff); }
+
+md-slider:not([md-discrete]):not([disabled]).active .md-thumb, md-slider:not([md-discrete]):not([disabled]):focus .md-thumb {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+      transform: scale(0.65); }
+
+md-slider.md-default-theme .md-thumb:after {
+  border-color: #7e8796 !important;
+  background-color: #4285f4 !important; }
+
+md-slider .md-thumb:after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: -7px;
+  width: 58px !important;
+  height: 58px !important;
+  -webkit-border-radius: 32px;
+          border-radius: 32px;
+  border: 3px solid; }
+
+.weekly_hours_slider {
+  width: 95%;
+  margin: 0 auto; }
+
+md-input-container.md-default-theme .md-input {
+  color: rgba(103, 103, 103, 0.87);
+  border-color: rgba(0, 0, 0, 0.12);
+  font-size: 20px;
+  font-weight: bold; }
+
+.gross_earnings_holder {
+  font-size: 20px;
+  padding: 10px; }
+  @media screen and (max-width: 960px) {
+    .gross_earnings_holder {
+      line-height: 1.7; } }
+
+.gross_income_input {
+  border: none;
+  background: transparent;
+  color: #7d7d7d;
+  max-width: 90px;
+  height: 35px; }
+
+.hours_per_week_input {
+  padding: 15px 8px 15px 20px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+  border: 1px solid silver;
+  width: 86px;
+  text-align: center; }
+
+.earnings_main_slider {
+  padding: 10px 0px 30px;
+  margin-bottom: 25px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  background: #fff;
+  color: #7d7d7d;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  text-align: center; }
+  .earnings_main_slider hr {
+    border: 1px solid rgba(76, 76, 76, 0.23); }
+
+.results_container {
+  display: block; }
+  @media screen and (min-width: 1280px) {
+    .results_container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; } }
+
+.income_value {
+  padding: 15px 5px 15px 20px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+  border: 1px solid silver; }
+  @media screen and (max-width: 960px) {
+    .income_value {
+      padding: 2px; } }
+
+.income_period_select {
+  padding: 15px 5px 15px 20px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+  border: 1px solid silver; }
+  @media screen and (max-width: 960px) {
+    .income_period_select {
+      padding: 0px; } }
+
+.income_tax_results_table_container {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18); }
+  .income_tax_results_table_container .results_row {
+    display: table-row; }
+  .income_tax_results_table_container .results_header {
+    background: #4285f4;
+    color: white;
+    font-weight: bold;
+    -webkit-border-radius: 3px;
+            border-radius: 3px;
+    font-size: 19px; }
+    @media screen and (max-width: 960px) {
+      .income_tax_results_table_container .results_header {
+        font-size: 17px; } }
+    .income_tax_results_table_container .results_header .results_cell:nth-child(1) {
+      -webkit-border-radius: 3px 0 0px 0px;
+              border-radius: 3px 0 0px 0px; }
+  .income_tax_results_table_container .results_cell {
+    display: table-cell;
+    background: transparent;
+    padding: 13px 15px 13px 3px;
+    text-align: right; }
+  .income_tax_results_table_container .results_cell:nth-child(even) {
+    background: rgba(0, 0, 0, 0.025); }
+
+.salary_row {
+  background: rgba(81, 138, 251, 0.36); }
+
+.tax_row {
+  background: rgba(220, 57, 18, 0.38); }
+
+.ni_row {
+  background: rgba(255, 153, 0, 0.34); }
+
+.net_pay_row {
+  background: rgba(7, 129, 255, 0.6);
+  font-weight: bold;
+  font-size: 19px; }
+  @media screen and (max-width: 960px) {
+    .net_pay_row {
+      font-size: 17px; } }
+
+.salary_row, .tax_row, .ni_row, .net_pay_row {
+  color: #272727; }
+
+.hidden_slider {
+  display: none; }
+
+.hidden_sliderx {
+  display: none; }
+
+.visible_slider {
+  display: inline-block;
+  width: 100%; }
+
+.hidden_input {
+  display: none; }
+
+.visible_input {
+  display: inline-block; }
+
+md-slider .md-focus-ring {
+  position: absolute;
+  left: -9px;
+  top: 13px;
+  width: 33px;
+  height: 33px;
+  -webkit-border-radius: 48px;
+  border-radius: 46px;
+  /* border: 2px solid #d43232; */
+  background-color: transparent;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear; }
+
+md-slider.md-default-theme .md-focus-ring {
+  border-color: rgba(0, 0, 0, 0.12); }
+
+.your_income {
+  float: left;
+  margin-left: 20px;
+  margin-top: 5px;
+  font-weight: bold;
+  color: #ababab;
+  font-size: 15px; }
+
+md-progress-linear {
+  width: 100%;
+  height: 5px; }
+
+.results_container_loaded {
+  opacity: 0.12; }
+
+.opaque_container {
+  -webkit-transition: 0.2s linear all;
+  transition: 0.2s linear all;
+  opacity: 0.07; }
+
+.visible_container {
+  -webkit-transition: 0.15s linear all;
+  transition: 0.15s linear all;
+  opacity: 1; }

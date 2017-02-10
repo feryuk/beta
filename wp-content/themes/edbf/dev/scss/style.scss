@@ -1,0 +1,26 @@
+.body {
+font-size: 6px;
+  color:red;
+  border-radius: 6px;
+  display: flex;
+  text-shadow: rgba(0,0,0,.01) 0 0 1px;
+
+}
+
+@keyframes MyAnimation {
+  0% { left: 0; }
+  50% { left: 50px; }
+  100% { left: 20px; }
+}
+
+p {
+  div {
+    display: flex;
+    background: linear-gradient(red, green);
+
+    border-radius: 10px;
+    object-fit: fill;
+    transform: rotate(30deg);
+    appearance: none;
+  }
+  }
