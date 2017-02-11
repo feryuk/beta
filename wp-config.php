@@ -27,7 +27,7 @@ define('DB_USER', 'iphonere_wp58');
 
 /** MySQL database password */
 define('DB_PASSWORD', 'E(JziAzsj5ZRt&Xiy4(39.#9');
-
+  
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 
@@ -36,7 +36,7 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-
+  
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -56,7 +56,7 @@ define('LOGGED_IN_SALT',   '1gIhwnSOj7uHjOrPPPfyw1qjNNItol0hxT3tcYB98HsGSq0hjWA3
 define('NONCE_SALT',       'VO5hzjrCMymKR29Py7Voj0kyvT6N4GXYQwXZNXiGuMJiVXQLgHWA5oWq2iRyORLH');
 define( 'WP_MEMORY_LIMIT', '256M' );
 
-
+ 
 /**
  * Other customizations.
  */
