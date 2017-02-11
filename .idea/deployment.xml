@@ -21,6 +21,9 @@
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="/wp-content/themes/edbf/dev" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
