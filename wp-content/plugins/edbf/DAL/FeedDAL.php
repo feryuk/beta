@@ -115,7 +115,7 @@ class FeedDAL
            // This is the where statement
         $where_statement = " WHERE status = 1 AND  (keyword IN('$test_keyword',$keyword_in) OR keyword like '$input_keywords')";
             $query = "SELECT  product_id, SUM( relevance ) AS sum FROM  iphonere_wp46.wp_keywords_to_product  
-          $where_statement group by product_id   ORDER BY sum DESC,  status DESC LIMIT 20";
+          \$where_statement group by product_id   ORDER BY sum DESC,  status DESC LIMIT 20";
         } else {
             $query = "SELECT  * FROM  iphonere_wp46.wp_keywords_to_product WHERE keyword NOT NULL 
             ORDER BY product_id ASC LIMIT 8";
