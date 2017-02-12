@@ -90,7 +90,7 @@ class FeedDAL
     * @param $keywords
     * @return array
     */
-    public function getResultsAdvanced($keywords, $low_price = 0, $high_price = 0, $order_by = 'price', $asc_desc = 'ASC')
+    public function getResultsAdvanced($keywords, $low_price = 0, $high_price = 0, $order_by = 'sum', $asc_desc = 'DESC')
     {
        // save the keywords into a variable so we don't strip them
        // this way we can search for exact match occurances as well in the db
@@ -111,16 +111,47 @@ class FeedDAL
         }
         $keyword_in = rtrim($keyword_in, ',');
        
-        if(!empty($input_keywords)) {
-           // This is the where statement
-        $where_statement = " WHERE status = 1 AND  (keyword IN('$test_keyword',$keyword_in) OR keyword like '$input_keywords')";
-            $query = "SELECT  product_id, SUM( relevance ) AS sum FROM  iphonere_wp46.wp_keywords_to_product  
-          \$where_statement group by product_id   ORDER BY sum DESC,  status DESC LIMIT 20";
-        } else {
-            $query = "SELECT  * FROM  iphonere_wp46.wp_keywords_to_product WHERE keyword NOT NULL 
-            ORDER BY product_id ASC LIMIT 8";
-        }
+       /**
+        * Defaults
+        */
+       $select_what = '';
+       $low_price_statement = '';
+       $high_price_statement = '';
+       $having_count = '';
+       
       
+      
+       /**
+        * Conditions
+        */
+       // if order by price is selected it will add the price to select
+       if($order_by == 'price') {
+          $select_what = ', price';
+       }
+       
+       if($order_by != 'sum') {
+          
+          $having_count = "having count(distinct ktp.keyword) = $keywords_number";
+       }
+       // if low price is greater than 0 from the range select
+       if($low_price > 0) {
+          $low_price_statement = "AND price >= $low_price";
+       }
+       // if high price is smaller than upper default value
+       if($high_price < 2000) {
+          $high_price_statement = " AND price <= $high_price";
+       }
+       // the price range statement
+       $price_range_statement = "$low_price_statement $high_price_statement";
+       // The where statement
+       $where_statement = " WHERE ktp.status = 1 AND  (ktp.keyword IN('$test_keyword',$keyword_in) OR ktp.keyword like '$input_keywords') $price_range_statement";
+   
+       // The main query
+       $query = "SELECT  product_id, SUM( ktp.relevance ) AS sum $select_what  FROM  iphonere_wp46.wp_keywords_to_product as ktp
+                 INNER JOIN iphonere_wp46.wp_latest_main as wlm ON ktp.product_id = wlm.ID
+                      $where_statement group by ktp.product_id $having_count  ORDER BY sum DESC, $order_by   $asc_desc  LIMIT 20";
+   
+        
         $product_ids = $this->getResultIds($query);
        /**
         * This is the query for getting the products
@@ -252,5 +283,57 @@ class FeedDAL
 
     }
 
+    
+    public function test() {
+   
+       /**
+        * Defaults
+        */
+       $select_what = '';
+       $low_price_statement = '';
+       $high_price_statement = '';
+       $orderby = 'sum';
+       $asc_desc = 'DESC';
+       $low_price = '51';
+       $high_price = '56';
+       /**
+        * Conditions
+        */
+       // if order by price is selected it will add the price to select
+       if($orderby == 'price') {
+          $select_what = ', price';
+       }
+       // if low price is greater than 0 from the range select
+       if($low_price > 0) {
+          $low_price_statement = "AND price >= $low_price";
+       }
+       // if high price is smaller than upper default value
+       if($high_price < 2000) {
+          $high_price_statement = " AND price <= $high_price";
+       }
+       // the price range statement
+       $price_range_statement = "$low_price_statement $high_price_statement";
+       // The where statement
+       $where_statement = " WHERE ktp.status = 1 AND  (ktp.keyword IN('adidas') OR ktp.keyword like 'nike') $price_range_statement";
+       
+       // The main query
+       $query = "SELECT  product_id, SUM( ktp.relevance ) AS sum $select_what  FROM  iphonere_wp46.wp_keywords_to_product as ktp
+                 INNER JOIN iphonere_wp46.wp_latest_main as wlm ON ktp.product_id = wlm.ID
+                      $where_statement group by ktp.product_id   ORDER BY $orderby $asc_desc LIMIT 200";
+   
+       $result = $this->connection->query($query);
+       $rows = array();
+       if ($this->connection->error == '') {
+          // the query worked, so fetch results from $result and do stuff with them.
+          while ($row = $result->fetch_assoc()) {
+         
+             $rows[] = $row;
+          }
+          
+       }
+       print_r($rows);
+       return $rows;
+       
+    }
 
 }

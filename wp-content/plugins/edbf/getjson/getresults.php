@@ -20,6 +20,7 @@ $low_price = $_GET['low_price'];
 $high_price = $_GET['high_price'];
    
  $results = $feed->getResultsAdvanced($keywords, $low_price, $high_price, $order_by, $asc_desc);
+ // $results = $feed->test();
 
 
 $time2 = microtime(true);
