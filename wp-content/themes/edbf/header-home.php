@@ -28,13 +28,15 @@
 
 
     <!-- CORE CSS-->
-
+   
     <link href="/beta/test/css/materialize.min.css?fhfhuhvcjgfghvjhty" type="text/css" rel="stylesheet" media="screen,projection">
+       <link href="/beta/wp-content/plugins/edbf/css/nouislider.css" type="text/css" rel="stylesheet" media="screen,projection">
+       
     <link href="/beta/test/css/style.min.css?<?php echo time();?>" type="text/css" rel="stylesheet" media="screen,projection">
     <!-- Custome CSS-->
     <link href="/beta/test/css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-
-
+   
+   <link href="/beta/wp-content/themes/edbf/style.min.css?<?php echo time();?>" type="text/css" rel="stylesheet" media="screen,projection">
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="/beta/test/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="/beta/test/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">

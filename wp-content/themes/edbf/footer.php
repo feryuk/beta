@@ -46,7 +46,7 @@ Scripts
 <!-- chartist -->
 <script type="text/javascript" src="/beta/test/js/plugins/chartist-js/chartist.min.js"></script>
 
-
+<script type="text/javascript" src="/beta/wp-content/plugins/edbf/js/nouislider.js?<?php echo time();?>"></script>
 <!-- masonry -->
 <script src="/beta/test/js/plugins/masonry.pkgd.min.js"></script>
 <!-- imagesloaded -->
@@ -56,6 +56,7 @@ Scripts
 <script type="text/javascript" src="/beta/test/js/plugins.min.js"></script>
 <!--custom-script.js - Add your own theme custom JS-->
 <script type="text/javascript" src="/beta/test/js/custom-script.js?<?php echo time();?>"></script>
+
 
 <script type="text/javascript">
     /*

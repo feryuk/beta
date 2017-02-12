@@ -17,26 +17,36 @@ class FeedDAL
         $this->connect = new Connect();
         $this->connection = $this->connect->connect();
     }
-
-
+   
+   /**
+    * THIS IS NOT THE MAIN QUERY WE ARE USING AT THE MOMENT, SEE GETRESULTSADVANCED METHOD BELOW
+    * Gets the results from the database
+    * @param $low_price
+    * @param $high_price
+    * @param $keywords
+    * @param string $order_by
+    * @param string $asc_desc
+    * @return array
+    */
     public function getResults($low_price, $high_price, $keywords, $order_by = 'price', $asc_desc = 'ASC')
     {
-
-
+   
+       /**
+        * Get all the keywords, that are separatd by a comma
+        */
         $keywords_pieces = explode(",", $keywords);
-
         $the_query = '';
         $and = ' AND ';
         $or = ' OR ';
+       // Loop through the keywords that have been generated above
         foreach ($keywords_pieces as $keywords_piece) {
-
+           // Get each individual keyword and put them in an array
             $keywords_array = explode(" ", $keywords_piece);
-
+           // loop through the aray of keywords
             foreach ($keywords_array as $keyword) {
-
+               
                 $the_query .= "(website = '$keyword') $and";
-
-
+               
             }
             $the_query = rtrim($the_query, "AND ");
             $the_query .= $or;
@@ -74,95 +84,70 @@ class FeedDAL
         return $rows;
 
     }
-
-
-    public function getResultsAdvanced($keywords)
+   
+   /**
+    * This is the main method that gets called in the getresults.php file to generate the search results
+    * @param $keywords
+    * @return array
+    */
+    public function getResultsAdvanced($keywords, $low_price = 0, $high_price = 0, $order_by = 'price', $asc_desc = 'ASC')
     {
-
+       // save the keywords into a variable so we don't strip them
+       // this way we can search for exact match occurances as well in the db
         $input_keywords = $keywords;
         $test_keyword = '';
         $keywords = explode(" ", $keywords);
         // create a special keyword so that keywords in can't match it unless exact match
+       // not sure but as for 12 Feb this feature wasn't used when we generated the keywords_to_products data
         $special_keyword = implode("x", str_split($input_keywords));
         $keyword_in = "'$special_keyword',";
+       //
         $keywords_number = 0;
         $where_statement = '';
         foreach ($keywords as $keyword) {
-
             $keyword_in .= "'" . $keyword . "',";
 
             $keywords_number++;
         }
-
-
         $keyword_in = rtrim($keyword_in, ',');
-
-
-
-
-
+       
         if(!empty($input_keywords)) {
-
-
+           // This is the where statement
         $where_statement = " WHERE status = 1 AND  (keyword IN('$test_keyword',$keyword_in) OR keyword like '$input_keywords')";
             $query = "SELECT  product_id, SUM( relevance ) AS sum FROM  iphonere_wp46.wp_keywords_to_product  
           $where_statement group by product_id   ORDER BY sum DESC,  status DESC LIMIT 20";
-
-            //$query = "SELECT  product_id, SUM( relevance ) AS sum FROM  iphonere_wp46.wp_keywords_to_product kp  WHERE   keyword IN('nike air max') OR keyword IN('nike', 'air') group by product_id  ORDER BY sum DESC LIMIT 24";
-//echo $query;
-
-
         } else {
-
             $query = "SELECT  * FROM  iphonere_wp46.wp_keywords_to_product WHERE keyword NOT NULL 
             ORDER BY product_id ASC LIMIT 8";
-
-
         }
-
-
-       // print_r($query);
-        $time1 = microtime(true);
-
+      
         $product_ids = $this->getResultIds($query);
-
-        $time2 = microtime(true);
-
-        //echo 'sScript execution time: ' . ($time2 - $time1); //value in seconds
-        //print_r($product_ids);
-
-
-
-        //$explain = $this->testSpeed("EXPLAIN EXTENDED ".$query);
-        //print_r($explain);
-
-
-
-
+       /**
+        * This is the query for getting the products
+        * by the list of IDs generated above
+        */
         $queryb = " SELECT * FROM iphonere_wp46.wp_latest_main WHERE ID IN ($product_ids) ORDER BY FIELD(ID, $product_ids); ";
+       // testspeed method is actually not a test
+       //it generates the results from the wp_latest_main table
         $test_datab = $this->testSpeed($queryb);
-
-
+       // empty array, this is where the results will be saved
         $rows = array();
         foreach ($test_datab as $row) {
-
+           // this takes care of the images
+           // it checks whether the image is an exixting file on the server
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/vapebot/thumbnails/' . $row["thumbnail"])) {
                $row['thumbnail'] = "http://www.everydayisblackfriday.co.uk/vapebot/thumbnails/" . $row['thumbnail'];
            } else {
                 $row['thumbnail'] = "http://www.everydayisblackfriday.co.uk/vapebot/images/noimage/no%20image.jpg";
            }
-
-
+           //
+           // This checks whether there is a cod for the 30 days history price chart
             if (empty($row['img_code'])) {
                 $row['img_code'] = "http://www.everydayisblackfriday.co.uk/wp-content/uploads/2015/11/discount-sale.png";
-
             }
-
             $rows[] = $row;
-
         }
-
-
+        // returns the array of results from wp_latest_main
         return $rows;
 
     }
