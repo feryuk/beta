@@ -22,3 +22,6 @@ ul.side-nav.leftside-navigation li a.item_description {
 
 ul.side-nav.leftside-navigation li:hover {
   background-color: rgba(71, 151, 221, 0.04); }
+
+.sort_by {
+  color: grey; }

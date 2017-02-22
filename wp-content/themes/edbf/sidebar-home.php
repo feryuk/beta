@@ -34,25 +34,23 @@
             </div>
          </div>
       </li>
-      <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>
-            Dashboard</a>
-      </li>
       <li class="no-padding">
-         <ul class="collapsible collapsible-accordion">
-            <li class="bold">
-               <a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i>
-                  Layouts</a>
-               <div class="collapsible-body">
-                  <ul>
-                     <li><a href="layout-fullscreen.html">Full Screen</a>
-                     </li>
-                     <li><a href="layout-horizontal-menu.html">Horizontal Menu</a>
-                     </li>
-                  </ul>
-               </div>
+         <ul>
+         
+            <li class="results_filter_item">
+               <a class="btn dropdown-button waves-effect waves-light grey lighten-3 sort_by" href="#!" data-activates="dropdown1">Sort by<i class="mdi-navigation-arrow-drop-down right"></i></a>
+               <ul id="dropdown1" class="dropdown-content" style="width: 182px; position: absolute; top: 357.516px; left: 1117.2px; opacity: 1; display: none;">
+                  <li><a href="#!" class="-text sort_by_trigger" data-sort-by="sum" data-asc-desc="DESC">Relevance</a>
+                  </li>
+                  <li><a href="#!" class="-text sort_by_trigger" data-sort-by="price" data-sort-by="price"  data-asc-desc="ASC">Lowest price</a>
+                  </li>
+                  <li><a href="#!" class="-text sort_by_trigger" data-sort-by="price"  data-asc-desc="DESC">Highest price</a>
+                  </li>
+                  <li><a href="#!" class="-text sort_by_trigger" data-sort-by="status"  data-asc-desc="1">Deals first</a>
+                  </li>
+                  </li>
+               </ul>
             </li>
-         </ul>
-      </li>
       <li class="no-padding">
          <ul>
            
@@ -61,14 +59,15 @@
                <div class="results_filter">
                  
                   <div id="slider"></div>
-               <input id="low_price" type="text" value="0">
-               <input id="high_price" type="text" value="2000">
-               <input id="order_by" type="text" value="price">
-               <input id="asc_desc" type="text" value="ASC">
+               <input id="low_price" type="hidden" value="0">
+               <input id="high_price" type="hidden" value="2000">
+               <input id="order_by" type="hidden" value="price">
+               <input id="asc_desc" type="hidden" value="ASC">
                   </div>
             </li>
          </ul>
       </li>
+      
       <li class="bold">
          <a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i>
             Calender</a>

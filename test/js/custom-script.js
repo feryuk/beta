@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 
     /**
-     * Generate results when the input form is submityted
+     * Generate results when the input form is submitted
      */
     $( "#search_form" ).submit(function( event ) {
         clearTimeout(myVar);
@@ -27,6 +27,25 @@ $(document).ready(function () {
         getResults();
 
     });
+
+    /**
+     * Generate results on sort by select
+     */
+    $('.sort_by_trigger').on('click', function () {
+        //var asc_desc = $(this).data('asc-desc');
+
+        $('#order_by').val($(this).data('sort-by'));
+        $('#asc_desc').val($(this).data('asc-desc'));
+
+
+        clearTimeout(myVar);
+        product = '<div class="product-sizer"></div>';
+        event.preventDefault();
+        delayEffect();
+        getResults();
+
+        $('.sort_by').html($(this).html()+'<i class="mdi-navigation-arrow-drop-down right"></i>');
+    })
 
     /**
      * Generate results when the price range slider is changed
@@ -109,7 +128,7 @@ function getResults() {
 
 
 
-            product += " <div class=\"product\"> <div class=\"card\"> <p class=\" grey-text ultra-small center-align product-title\"><a href=\""+value.url+"\" class=\"grey-text text-lighten-1\">"+title_ready+" <span style='font-weight: bold;'>sony</span></a> </p> <div class=\"center-align grey-text text-lighten-2 mega-small\">"+value.website+" "+value.ID+"</div> <div class=\"card-image waves-effect waves-block waves-light\"> <a href=\"#\"><img src=\""+value.thumbnail+"\" alt=\"product-img\"> </a> </div> <ul class=\"card-action-buttons\"> <li><a class=\"btn-floating waves-effect waves-light red accent-1\"><i class=\"mdi-action-favorite\"></i></a> </li> <li><a class=\"btn-floating waves-effect waves-light light-blue accent-1\"><i class=\"mdi-action-info activator\"></i></a> </li> </ul> <div class=\"card-content\"> <div class=\"row\"> <div class=\"col s12\">£"+value.price+" </div></div> </div> <div class=\"card-reveal\"> <span class=\"card-title grey-text text-darken-4\"><i class=\"mdi-navigation-close right\"></i> Apple MacBook Pro A1278 13\"</span> <p>Here is some more information about this product that is only revealed once clicked on.</p> </div> </div> </div>";
+            product += " <div class=\"product\"> <div class=\"card\"> <p class=\" grey-text ultra-small center-align product-title\"><a href=\""+value.url+"\" class=\"grey-text text-lighten-1\">"+title_ready+"</a> </p> <div class=\"center-align grey-text text-lighten-2 mega-small\">"+value.website+" "+value.ID+"</div> <div class=\"card-image waves-effect waves-block waves-light\"> <a href=\"#\"><img src=\""+value.thumbnail+"\" alt=\"product-img\"> </a> </div> <ul class=\"card-action-buttons\"> <li><a class=\"btn-floating waves-effect waves-light red accent-1\"><i class=\"mdi-action-favorite\"></i></a> </li> <li><a class=\"btn-floating waves-effect waves-light light-blue accent-1\"><i class=\"mdi-action-info activator\"></i></a> </li> </ul> <div class=\"card-content\"> <div class=\"row\"> <div class=\"col s12\">£"+value.price+" </div></div> </div> <div class=\"card-reveal\"> <span class=\"card-title grey-text text-darken-4\"><i class=\"mdi-navigation-close right\"></i> Apple MacBook Pro A1278 13\"</span> <p>Here is some more information about this product that is only revealed once clicked on.</p> </div> </div> </div>";
         });
 
          jqobj = $(product);
@@ -160,6 +179,7 @@ var slider = document.getElementById('slider');
 
 noUiSlider.create(slider, {
     start: [0, 2000],
+    float: false,
     tooltips: [
         wNumb({ decimals: 0,
         thousand: ',',
@@ -170,6 +190,7 @@ noUiSlider.create(slider, {
         prefix: '£',})
     ],
     connect: true,
+    step : 1,
     range: {
         'min': 0,
         'max': 2000

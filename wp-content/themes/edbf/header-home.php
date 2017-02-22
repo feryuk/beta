@@ -59,7 +59,7 @@
                 </ul>
                <form id="search_form"> <div class="header-search-wrapper hide-on-med-and-down">
                     <i class="mdi-action-search"></i>
-                    <input id="search" type="text" name="q" class="header-search-input z-depth-2" placeholder="Explore Materialize" autocomplete="false"/>
+                    <input id="search" type="text" name="q" class="header-search-input z-depth-2" placeholder="Search products..." autocomplete="false"/>
                 </div></form>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button"  data-activates="translation-dropdown"><img src="/beta/test/images/flag-icons/United-States.png" alt="USA" /></a>
